@@ -1,15 +1,270 @@
-<!-- TODO 1: Create the HTML Boilerplate -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Gbadeyan Hero, a creative junior developer specializing in WordPress, front-end development, and project management.">
+    <title>Gbadeyan Hero | Creative Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #f5f5f5;
+            background-color: #121212;
+        }
 
-<!-- TODO 2: Add Your previous projects' HTML into the public folder -->
+        header {
+            background: #1f1f1f;
+            color: #f5f5f5;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
 
-<!-- TODO 3: Take screenshots of your project previews and add the images to the images folder -->
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
 
-<!-- TODO 4: Add titles/subtitles etc. -->
+        header nav {
+            display: flex;
+            align-items: center;
+        }
 
-<!-- TODO 5: Add a link to the project pages -->
+        header nav a {
+            color: #f5f5f5;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
 
-<!-- TODO 6: Add images to show the project previews
-HINT for TODO 6: You can use the height attribute set to 200 to make the image smaller:
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-height -->
+        header nav a:hover {
+            color: #ff5722;
+        }
 
-<!-- TODO 7: Add the Contact Me and About Me page links -->
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #f5f5f5;
+            margin: 3px 0;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #1f1f1f;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-nav a {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('https://via.placeholder.com/1920x800') center/cover no-repeat;
+            color: #f5f5f5;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .services, .projects, .contact {
+            padding: 80px 20px;
+        }
+
+        .services h3, .projects h3, .contact h3 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #ff5722;
+        }
+
+        .services .service-item, .projects .project-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .services .service-item img, .projects .project-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .service-item h4, .project-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .service-item p, .project-item p {
+            font-size: 1rem;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .contact {
+            text-align: center;
+            background: #1f1f1f;
+            color: #f5f5f5;
+        }
+
+        .contact p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            background-color: #ff5722;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e64a19;
+        }
+
+        footer {
+            background-color: #121212;
+            color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+            font-size: 1rem;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services .grid, .projects .grid {
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .burger {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gbadeyan Hero</h1>
+        <div class="burger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Hi, I’m Gbadeyan Hero</h2>
+        <p>Creative Junior Developer | Learning and Innovating</p>
+    </section>
+
+    <section id="services" class="services">
+        <h3>My Services</h3>
+        <div class="grid">
+            <div class="service-item">
+                <img src="https://via.placeholder.com/80" alt="WordPress Icon">
+                <h4>WordPress Development</h4>
+                <p>Creating customized, user-friendly WordPress websites tailored to your needs.</p>
+            </div>
+            <div class="service-item">
+                <img src="https://via.placeholder.com/80" alt="Frontend Icon">
+                <h4>Front-End Development</h4>
+                <p>Designing modern and responsive user interfaces that engage users.</p>
+            </div>
+            <div class="service-item">
+                <img src="https://via.placeholder.com/80" alt="Project Icon">
+                <h4>Project Management</h4>
+                <p>Ensuring projects are delivered on time, within scope, and exceed expectations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h3>My Projects</h3>
+        <div class="grid">
+            <div class="project-item">
+                <img src="https://via.placeholder.com/300x200" alt="PrimeTrack Screenshot">
+                <h4>PrimeTrack Website</h4>
+                <p>A sleek and functional car-tracking portal: <a href="https://www.primetrack.rw" target="_blank">www.primetrack.rw</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h3>Contact Me</h3>
+        <p>Email: <a href="mailto:herogbadeyan24@gmail.com" style="color:#fff;">herogbadeyan24@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Gbadeyan Hero. All Rights Reserved.</p>
+    </footer>
+
+  
+    <script>
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
